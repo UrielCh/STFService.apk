@@ -73,11 +73,11 @@ public class Service extends android.app.Service {
     private static final String TAG = "STFService";
     private static final int NOTIFICATION_ID = 0x1;
 
-    private List<AbstractMonitor> monitors = new ArrayList<AbstractMonitor>();
-    private ExecutorService executor = Executors.newCachedThreadPool();
+    private final List<AbstractMonitor> monitors = new ArrayList<AbstractMonitor>();
+    private final ExecutorService executor = Executors.newCachedThreadPool();
     private LocalServerSocket acceptor;
     private boolean started = false;
-    private MessageWriter.Pool writers = new MessageWriter.Pool();
+    private final MessageWriter.Pool writers = new MessageWriter.Pool();
 
     // We can only access CLIPBOARD_SERVICE from the main thread
     private static Object clipboardManager;
@@ -223,8 +223,8 @@ public class Service extends android.app.Service {
     }
 
     class Server extends Thread {
-        private LocalServerSocket acceptor;
-        private ExecutorService executor = Executors.newCachedThreadPool();
+        private final LocalServerSocket acceptor;
+        private final ExecutorService executor = Executors.newCachedThreadPool();
 
         public Server(LocalServerSocket acceptor) {
             this.acceptor = acceptor;
@@ -269,7 +269,7 @@ public class Service extends android.app.Service {
         }
 
         class Connection extends Thread {
-            private LocalSocket socket;
+            private final LocalSocket socket;
 
             public Connection(LocalSocket socket) {
                 this.socket = socket;
@@ -427,11 +427,11 @@ public class Service extends android.app.Service {
             String lastAdbState = "";
             try {
                 while (!isInterrupted()) {
-                    /**
-                     * In order for the monitor to work you need to grant DUMP permission for
-                     * the apk, e.g.
-                     *
-                     * adb -d shell pm grant jp.co.cyberagent.stf android.permission.DUMP
+                    /*
+                      In order for the monitor to work you need to grant DUMP permission for
+                      the apk, e.g.
+
+                      adb -d shell pm grant jp.co.cyberagent.stf android.permission.DUMP
                      */
                     int dumpPermission = ContextCompat.checkSelfPermission(getApplication(), Manifest.permission.DUMP);
                     if (dumpPermission == PackageManager.PERMISSION_GRANTED) {
@@ -442,9 +442,9 @@ public class Service extends android.app.Service {
 
                         java.lang.Process process = Runtime.getRuntime().exec(cmd);
 
-                        /**
-                         * If the output of the command will change then by default device will be
-                         * considered connected
+                        /*
+                          If the output of the command will change then by default device will be
+                          considered connected
                          */
                         String currentUsbState = "";
                         String currentAdbState = "";

@@ -38,8 +38,8 @@ public class InputManagerWrapper {
      */
     private class InputManagerEventInjector implements EventInjector {
         public static final int INJECT_INPUT_EVENT_MODE_ASYNC = 0;
-        private Object inputManager;
-        private Method injector;
+        private final Object inputManager;
+        private final Method injector;
 
         public InputManagerEventInjector() {
             try {
@@ -80,8 +80,8 @@ public class InputManagerWrapper {
      * EventInjector for SDK <16
      */
     private class WindowManagerEventInjector implements EventInjector {
-        private Object windowManager;
-        private Method keyInjector;
+        private final Object windowManager;
+        private final Method keyInjector;
 
         public WindowManagerEventInjector() {
             try {

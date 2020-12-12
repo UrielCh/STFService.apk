@@ -14,7 +14,7 @@ import jp.co.cyberagent.stf.proto.Wire;
 public class ConnectivityMonitor extends AbstractMonitor {
     private static final String TAG = "STFConnectivityMonitor";
 
-    private ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+    private final ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
     public ConnectivityMonitor(Context context, MessageWritable writer) {
         super(context, writer);

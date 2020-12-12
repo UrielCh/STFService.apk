@@ -15,7 +15,6 @@ public class GetBluetoothStatusResponder extends AbstractResponder {
         super(context);
     }
 
-    @Override
     public GeneratedMessageLite respond(Wire.Envelope envelope) throws InvalidProtocolBufferException {
         Wire.GetBluetoothStatusRequest request =
                 Wire.GetBluetoothStatusRequest.parseFrom(envelope.getMessage());
@@ -54,7 +53,6 @@ public class GetBluetoothStatusResponder extends AbstractResponder {
                 .build();
     }
 
-    @Override
     public void cleanup() {
         // No-op
     }

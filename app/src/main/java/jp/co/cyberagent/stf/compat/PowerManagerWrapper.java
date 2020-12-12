@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 import jp.co.cyberagent.stf.util.InternalApi;
 
 public class PowerManagerWrapper {
-    private Object powerManager;
+    private final Object powerManager;
     private WakeInjector wakeInjector;
 
     public PowerManagerWrapper() {
@@ -33,14 +33,14 @@ public class PowerManagerWrapper {
     }
 
     private interface WakeInjector {
-        public boolean wakeUp();
+        boolean wakeUp();
     }
 
     /**
      * WakeInjector for newer API
      */
     private class WakeUpWakeInjector implements WakeInjector {
-        private Method injector;
+        private final Method injector;
 
         public WakeUpWakeInjector() {
             try {
@@ -74,7 +74,7 @@ public class PowerManagerWrapper {
      * WakeInjector for newer API using userActivity()
      */
     private class NewUserActivityWakeInjector implements WakeInjector {
-        private Method injector;
+        private final Method injector;
 
         public NewUserActivityWakeInjector() {
             try {
@@ -108,7 +108,7 @@ public class PowerManagerWrapper {
      * WakeInjector for older API
      */
     private class OldUserActivityWakeInjector implements WakeInjector {
-        private Method injector;
+        private final Method injector;
 
         public OldUserActivityWakeInjector() {
             try {

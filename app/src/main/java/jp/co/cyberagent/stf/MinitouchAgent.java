@@ -55,9 +55,9 @@ public class MinitouchAgent extends Thread {
     private final int height;
     private LocalServerSocket serverSocket;
 
-    private MotionEvent.PointerProperties[] pointerProperties = new MotionEvent.PointerProperties[2];
-    private MotionEvent.PointerCoords[] pointerCoords = new MotionEvent.PointerCoords[2];
-    private PointerEvent[] events = new PointerEvent[2];
+    private final MotionEvent.PointerProperties[] pointerProperties = new MotionEvent.PointerProperties[2];
+    private final MotionEvent.PointerCoords[] pointerCoords = new MotionEvent.PointerCoords[2];
+    private final PointerEvent[] events = new PointerEvent[2];
 
     private final InputManagerWrapper inputManager;
     private final WindowManagerWrapper windowManager;

@@ -3,7 +3,6 @@ package jp.co.cyberagent.stf;
 import android.graphics.Point;
 import android.net.LocalServerSocket;
 import android.net.LocalSocket;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
@@ -29,7 +28,7 @@ public class Agent extends Thread {
     private InputManagerWrapper inputManager;
     private PowerManagerWrapper powerManager;
     private WindowManagerWrapper windowManager;
-    private Handler handler;
+    private final Handler handler;
     private LocalServerSocket serverSocket;
     private int deviceId = -1; // KeyCharacterMap.VIRTUAL_KEYBOARD
     private KeyCharacterMap keyCharacterMap;
@@ -192,7 +191,7 @@ public class Agent extends Thread {
     }
 
     private class InputClient extends Thread {
-        private LocalSocket clientSocket;
+        private final LocalSocket clientSocket;
 
         public InputClient(LocalSocket clientSocket) {
             this.clientSocket = clientSocket;

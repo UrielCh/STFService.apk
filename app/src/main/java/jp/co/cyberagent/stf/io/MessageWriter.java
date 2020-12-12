@@ -11,11 +11,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class MessageWriter implements MessageWritable {
-    private ExecutorService executor = Executors.newSingleThreadExecutor();
-    private OutputStream out;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private final OutputStream out;
 
-    public static interface Writable {
-        public void write(final GeneratedMessageLite message);
+    public interface Writable {
+        void write(final GeneratedMessageLite message);
     }
 
     public MessageWriter(OutputStream out) {
@@ -38,7 +38,7 @@ public class MessageWriter implements MessageWritable {
     }
 
     public static class Pool implements MessageWritable {
-        Set<MessageWriter> writers = Collections.synchronizedSet(new HashSet<MessageWriter>());
+        final Set<MessageWriter> writers = Collections.synchronizedSet(new HashSet<MessageWriter>());
 
         public void add(MessageWriter writer) {
             writers.add(writer);

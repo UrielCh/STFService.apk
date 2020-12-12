@@ -6,7 +6,7 @@ import java.io.InputStream;
 import jp.co.cyberagent.stf.proto.Wire;
 
 public class MessageReader {
-    private InputStream in;
+    private final InputStream in;
 
     public MessageReader(InputStream in) {
         this.in = in;

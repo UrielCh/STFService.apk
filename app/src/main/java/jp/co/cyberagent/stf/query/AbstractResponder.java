@@ -8,7 +8,7 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import jp.co.cyberagent.stf.proto.Wire;
 
 abstract public class AbstractResponder {
-    Context context;
+    final Context context;
 
     protected AbstractResponder(Context context) {
         this.context = context;

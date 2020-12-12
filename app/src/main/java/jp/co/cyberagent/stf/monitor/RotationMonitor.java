@@ -11,7 +11,7 @@ import jp.co.cyberagent.stf.compat.WindowManagerWrapper;
 public class RotationMonitor extends AbstractMonitor {
     private static final String TAG = "STFRotationMonitor";
 
-    private WindowManagerWrapper wmw = new WindowManagerWrapper();
+    private final WindowManagerWrapper wmw = new WindowManagerWrapper();
 
     public RotationMonitor(Context context, MessageWritable writer) {
         super(context, writer);

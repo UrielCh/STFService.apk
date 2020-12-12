@@ -5,8 +5,8 @@ import android.content.Context;
 import jp.co.cyberagent.stf.io.MessageWritable;
 
 abstract public class AbstractMonitor extends Thread {
-    Context context;
-    MessageWritable writer;
+    final Context context;
+    final MessageWritable writer;
 
     public AbstractMonitor(Context context, MessageWritable writer) {
         this.context = context;

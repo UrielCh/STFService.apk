@@ -21,7 +21,7 @@ import jp.co.cyberagent.stf.util.BrowserUtil;
 public class BrowserPackageMonitor extends AbstractMonitor {
     private static final String TAG = "STFBrowserPkgMonitor";
 
-    private Set<Browser> browsers = new HashSet<Browser>();
+    private final Set<Browser> browsers = new HashSet<>();
 
     public BrowserPackageMonitor(Context context, MessageWritable writer) {
         super(context, writer);
@@ -80,13 +80,13 @@ public class BrowserPackageMonitor extends AbstractMonitor {
     synchronized private void report(MessageWritable writer, boolean force) {
         PackageManager pm = context.getPackageManager();
 
-        Set<Browser> removeBrowsers = new HashSet<Browser>(browsers);
-        Set<Browser> newBrowsers = new HashSet<Browser>();
+        Set<Browser> removeBrowsers = new HashSet<>(browsers);
+        Set<Browser> newBrowsers = new HashSet<>();
 
         List<ResolveInfo> browserInfoList = BrowserUtil.getBrowsers(context);
         ResolveInfo defaultBrowser = BrowserUtil.getDefaultBrowser(context);
 
-        ArrayList<Wire.BrowserApp> apps = new ArrayList<Wire.BrowserApp>();
+        ArrayList<Wire.BrowserApp> apps = new ArrayList<>();
 
         for (ResolveInfo info : browserInfoList) {
             ApplicationInfo appInfo = info.activityInfo.applicationInfo;
@@ -131,10 +131,10 @@ public class BrowserPackageMonitor extends AbstractMonitor {
     }
 
     private static class Browser {
-        private String name;
-        private String component;
-        private boolean selected;
-        private boolean system;
+        private final String name;
+        private final String component;
+        private final boolean selected;
+        private final boolean system;
 
         public Browser(String name, String component, boolean selected, boolean system) {
             this.name = name;

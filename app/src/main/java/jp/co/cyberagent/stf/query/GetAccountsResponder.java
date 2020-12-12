@@ -3,7 +3,6 @@ package jp.co.cyberagent.stf.query;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.Context;
-import android.util.Log;
 
 import com.google.protobuf.GeneratedMessageLite;
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -24,7 +23,7 @@ public class GetAccountsResponder extends AbstractResponder {
 
         String accountType = null;
         ArrayList<String> accountsName = new ArrayList<String>();
-        AccountManager am = AccountManager.get(context);
+        AccountManager am = AccountManager.get(super.context);
 
         if(request.hasType()) {
             accountType = request.getType();

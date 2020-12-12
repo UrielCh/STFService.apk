@@ -1,9 +1,7 @@
 package jp.co.cyberagent.stf.compat;
 
-import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 
 import android.os.RemoteException;
 import android.view.IRotationWatcher;
@@ -12,15 +10,15 @@ import jp.co.cyberagent.stf.util.InternalApi;
 
 public class WindowManagerWrapper {
     private RotationInjector rotationInjector;
-    private Object windowManager;
+    private final Object windowManager;
 
     private interface RotationInjector {
-        public void freezeRotation(int rotation);
-        public void thawRotation();
+        void freezeRotation(int rotation);
+        void thawRotation();
     }
 
-    public static interface RotationWatcher {
-        public void onRotationChanged(int rotation);
+    public interface RotationWatcher {
+        void onRotationChanged(int rotation);
     }
 
     public WindowManagerWrapper() {
@@ -123,8 +121,8 @@ public class WindowManagerWrapper {
      * EventInjector for SDK >10
      */
     private class FreezeThawRotationInjector implements RotationInjector {
-        private Method freezeRotationInjector;
-        private Method thawRotationInjector;
+        private final Method freezeRotationInjector;
+        private final Method thawRotationInjector;
 
         public FreezeThawRotationInjector() {
             try {
@@ -170,7 +168,7 @@ public class WindowManagerWrapper {
      * EventInjector for SDK <=10
      */
     private class SetRotationRotationInjector implements RotationInjector {
-        private Method setRotationInjector;
+        private final Method setRotationInjector;
 
         public SetRotationRotationInjector() {
             try {

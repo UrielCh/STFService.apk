@@ -9,8 +9,8 @@ import jp.co.cyberagent.stf.proto.Wire;
 import jp.co.cyberagent.stf.query.AbstractResponder;
 
 public class MessageRouter {
-    private Map<Wire.MessageType, AbstractResponder> responders = new HashMap<Wire.MessageType, AbstractResponder>();
-    private MessageWriter writer;
+    private final Map<Wire.MessageType, AbstractResponder> responders = new HashMap<Wire.MessageType, AbstractResponder>();
+    private final MessageWriter writer;
 
     public MessageRouter(MessageWriter writer) {
         this.writer = writer;

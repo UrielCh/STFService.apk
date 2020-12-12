@@ -138,14 +138,14 @@ public class BatteryMonitor extends AbstractMonitor {
     }
 
     private static class BatteryState {
-        private int health;
-        private int level;
-        private int source;
-        private int scale;
-        private int status;
-        private String tech;
-        private int temp;
-        private int voltage;
+        private final int health;
+        private final int level;
+        private final int source;
+        private final int scale;
+        private final int status;
+        private final String tech;
+        private final int temp;
+        private final int voltage;
 
         public BatteryState(Intent intent) {
             health = intent.getIntExtra(BatteryManager.EXTRA_HEALTH, BatteryManager.BATTERY_HEALTH_UNKNOWN);
